@@ -3,15 +3,33 @@ using System.Collections.Generic;
 
 namespace ICompareblePrac
 {
-    class Product
+
+    interface ITest
+    {
+
+    }
+    class TesetClass : IBasic
+    {
+        int IBasic.TestProperty { 
+            get => 0; 
+            set => value=0; 
+        }
+
+        int IBasic.TestInstanceMethod()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    class Product : IComparable
     {
         public string Name { get; set; }
         public int Price { get; set; }
         public int CompareTo(object obj)
         {
             //return this.Price - ((Product)obj).Price;
-            // return this.Name[0] - ((Product)obj).Name[0];
-            return this.Price.CompareTo(((Product)obj).Price);
+            //return this.Name[0] - ((Product)obj).Name[0];
+            return this.Name.CompareTo(((Product)obj).Name);
+            //return this.Price.CompareTo(((Product)obj).Price);
         }
         public override string ToString()
         {
@@ -34,7 +52,7 @@ namespace ICompareblePrac
             
             foreach(var item in list)
             {
-                Console.WriteLine(list);
+                Console.WriteLine(item);
             }
         }
     }
